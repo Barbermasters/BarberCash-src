@@ -1,0 +1,9 @@
+Building BarberCash
+
+See doc/readme-qt.rst for instructions on building BarberCash QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of BarberCash.
+
+See doc/build-*.txt for instructions on building BarberCashd,
+the intended-for-services, no-graphical-interface, reference
+implementation of BarberCash.

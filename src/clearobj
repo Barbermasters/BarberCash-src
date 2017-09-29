@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "Start clearing..."
+
+rm obj/*.o
+rm obj/*.P
+rm obj/*.h
+rm obj/*.d
+rm obj/zerocoin/*.o
+rm obj/zerocoin/*.P
+rm leveldb/libleveldb.a
+rm leveldb/libmemenv.a
+# rm BarberCashd
+
+rm -R ~/.BarberCash/database
+rm -R ~/.BarberCash/txleveldb
+rm ~/.BarberCash/*.dat
+rm ~/.BarberCash/*log
+rm -R ~/.BarberCash/.lock
+
+echo "done."
+exit 0

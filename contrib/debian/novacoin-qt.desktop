@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=BarberCash
+Comment=BarberCash P2P Cryptocurrency
+Comment[fr]=BarberCash, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=BarberCash, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/BarberCash-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcoin80.xpm
+MimeType=x-scheme-handler/BarberCash;
+Categories=Office;

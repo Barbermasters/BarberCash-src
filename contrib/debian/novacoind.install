@@ -1,0 +1,2 @@
+debian/bin/BarberCashd usr/bin
+src/BarberCashd usr/lib/BarberCash
