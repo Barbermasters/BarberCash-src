@@ -38,12 +38,12 @@ map<uint256, CBlockIndex*> mapBlockIndex;
 set<pair<COutPoint, unsigned int> > setStakeSeen;
 libzerocoin::Params* ZCParams;
 
-CBigNum bnProofOfWorkLimit(~uint256(0) >> 24); // 0,000244140625 proof-of-work difficulty starting - test modification from 20 to 24 for higher starting POW diff 0.00390625
+CBigNum bnProofOfWorkLimit(~uint256(0) >> 23); // 0,000244140625 proof-of-work difficulty starting - test modification from 20 to 24 for higher starting POW diff 0.00390625
 CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 
-static const int64_t nTargetTimespan = 9 * 60;  // 9m
-unsigned int nTargetSpacing = 3 * 60; // BarberCash - 3 min blocks
+static const int64_t nTargetTimespan = 16 * 60;  // BarberCash
+unsigned int nTargetSpacing = 120; // BarberCash
 static const int64_t nInterval = nTargetTimespan / nTargetSpacing;
 static const int64_t nDiffChangeTarget = 1;
 
@@ -51,7 +51,7 @@ unsigned int nStakeMinAge = 8 * 60 * 60; // BarberCash - 8 hours
 unsigned int nStakeMaxAge = -1;  // BarberCash - unlimited
 unsigned int nModifierInterval = 10 * 60; // BarberCash - 10 min time to elapse before new modifier is computed
 
-int nCoinbaseMaturity = 20;
+int nCoinbaseMaturity = 3;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
@@ -818,6 +818,8 @@ int CMerkleTx::GetDepthInMainChain(CBlockIndex* &pindexRet) const
     if (nResult == 0 && !mempool.exists(GetHash()))
         return -1; // Not in chain, not in mempool
 
+    //if (nResult>3) nResult=3; // BarberCash Im
+
     return nResult;
 }
 
@@ -825,7 +827,7 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!(IsCoinBase() || IsCoinStake()))
         return 0;
-    return max(0, (nCoinbaseMaturity+10) - GetDepthInMainChain());
+    return max(0, (nCoinbaseMaturity+1) - GetDepthInMainChain());
 }
 
 
@@ -2551,9 +2553,9 @@ bool LoadBlockIndex(bool fAllowNew)
 
 
 
-        const char* pszTimestamp = "28 September 2017";
+        const char* pszTimestamp = "29 September 2017";
         CTransaction txNew;
-        txNew.nTime = 1506610049;
+        txNew.nTime = 1506684376;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -2563,9 +2565,9 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1506610049;
+        block.nTime    = 1506684376;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 51950907;
+        block.nNonce   = 9700615;
 
 
 
@@ -2596,7 +2598,7 @@ bool LoadBlockIndex(bool fAllowNew)
         printf("block.nTime = %u \n", block.nTime);
         printf("block.nNonce = %u \n", block.nNonce);
 
-        assert(block.hashMerkleRoot == uint256("0xdf6596bb9b9b0f43b6f7969ffbaaa0730449599daef55bf3581f18a1a070f893"));
+        assert(block.hashMerkleRoot == uint256("0x969100828754300ead7a7541d986dec9f9ffbb0e75d2c09c4d62f2e9b770195d"));
 
 
         //block.print();
