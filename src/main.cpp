@@ -2553,9 +2553,9 @@ bool LoadBlockIndex(bool fAllowNew)
 
 
 
-        const char* pszTimestamp = "29 September 2017";
+        const char* pszTimestamp = "18 October 2017";
         CTransaction txNew;
-        txNew.nTime = 1506684376;
+        txNew.nTime = 1508304508;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -2565,9 +2565,9 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1506684376;
+        block.nTime    = 1508304508;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 9700615;
+        block.nNonce   = 1801335;
 
 
 
@@ -2598,7 +2598,7 @@ bool LoadBlockIndex(bool fAllowNew)
         printf("block.nTime = %u \n", block.nTime);
         printf("block.nNonce = %u \n", block.nNonce);
 
-        assert(block.hashMerkleRoot == uint256("0x969100828754300ead7a7541d986dec9f9ffbb0e75d2c09c4d62f2e9b770195d"));
+        assert(block.hashMerkleRoot == uint256("0x0a73844ff2f04199ae5e092db29a7267d8560dfc59969a490e31a361805a7b69"));
 
 
         //block.print();

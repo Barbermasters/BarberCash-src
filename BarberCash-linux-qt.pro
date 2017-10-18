@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = BarberCash-qt
-VERSION = 1.3.7.9
+VERSION = 1.0.3.0
 INCLUDEPATH += src src/json src/qt
 QT += core gui network printsupport
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE USE_IPV6 BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES
@@ -8,7 +8,7 @@ DEFINES += STATIC
 DEFINES += QT_STATIC_BUILD
 CONFIG += no_include_pwd
 CONFIG += thread
-#CONFIG += static
+CONFIG += static
 CONFIG += openssl-linked
 CONFIG += openssl
 
@@ -343,7 +343,6 @@ RESOURCES += \
     src/qt/bitcoin.qrc
 
 FORMS += \
-    src/qt/forms/coincontroldialog.ui \
     src/qt/forms/sendcoinsdialog.ui \
     src/qt/forms/addressbookpage.ui \
     src/qt/forms/signverifymessagedialog.ui \
@@ -354,7 +353,8 @@ FORMS += \
     src/qt/forms/sendcoinsentry.ui \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
-    src/qt/forms/optionsdialog.ui 
+    src/qt/forms/optionsdialog.ui \ 
+    src/qt/forms/coincontroldialog.ui
 
 contains(USE_QRCODE, 1) {
 HEADERS += src/qt/qrcodedialog.h
